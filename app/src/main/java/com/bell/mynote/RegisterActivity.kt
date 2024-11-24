@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bell.mynote.databinding.ActivityRegisterBinding
-import com.bell.mynote.ui.MainActivity
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -18,9 +17,9 @@ class RegisterActivity : AppCompatActivity() {
         prefManager = PrefManager.getInstance(this)
         with(binding) {
             btnRegister.setOnClickListener {
-                val username = editUsername.text.toString()
-                val password = editPassword.text.toString()
-                val confirmPassword = editConfirm.text.toString()
+                val username = etUsernameRegister.text.toString()
+                val password = etPasswordRegister.text.toString()
+                val confirmPassword = etConfirmpassRegister.text.toString()
                 if (username.isEmpty() || password.isEmpty() ||
                     confirmPassword.isEmpty()) {
                     Toast.makeText(
@@ -41,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             txtLogin.setOnClickListener {
                 startActivity(Intent(this@RegisterActivity,
-                    MainActivity::class.java))
+                    LoginActivity::class.java))
             }
         }
     }
@@ -50,7 +49,7 @@ class RegisterActivity : AppCompatActivity() {
         if (isLoggedIn) {
             Toast.makeText(this@RegisterActivity, "Registrasi berhasil",
                 Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
             finish()
         } else {
             Toast.makeText(this@RegisterActivity, "Registrasi gagal",

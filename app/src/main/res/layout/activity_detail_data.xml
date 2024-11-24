@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
+    android:background="@color/blueteal"
+    tools:context=".DetailActivity">
+    <TextView
+        android:id="@+id/txt2_datapemilih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail Data KPU"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_margin="30dp"
+        android:textSize="30sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <EditText
+            android:id="@+id/et_dtl_namapemilih"
+            android:text="Belda Putri Pramono"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:padding="13dp"
+            tools:ignore="RtlCompat" />
+
+        <EditText
+            android:id="@+id/et_dtl_nik"
+            android:text="12345678910"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:padding="13dp" />
+
+        <EditText
+            android:id="@+id/et_dtl_gender"
+            android:text="Perempuan"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:padding="13dp" />
+
+        <EditText
+            android:id="@+id/et_dtl_alamat"
+            android:text="Gendingan Kidul"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:padding="13dp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Kembali"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="false"
+        android:background="@color/white"
+        android:textColor="@color/blueteal"
+        android:padding="15dp"
+        android:elevation="5dp" />
+
+
+</LinearLayout>

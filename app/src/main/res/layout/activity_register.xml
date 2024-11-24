@@ -1,46 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
-    <EditText
-        android:id="@+id/edit_username"
+    android:background="@color/blueteal"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Icon -->
+    <ImageView
+        android:id="@+id/icon1"
+        android:layout_width="100dp"
+        android:layout_height="280dp"
+        android:src="@drawable/logo_icon"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Short Description -->
+    <TextView
+        android:id="@+id/description1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Apps ini digunakan oleh petugas KPU untuk mendata peserta pemilu"
+        android:textSize="17sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp" />
 
+    <!-- Username Input -->
     <EditText
-        android:id="@+id/edit_password"
+        android:id="@+id/et_username_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:inputType="text"
+        android:backgroundTint="@color/graysoft"
+        android:background="@android:drawable/editbox_background"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Password Input -->
+    <EditText
+        android:id="@+id/et_password_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:minHeight="48dp" />
+        android:inputType="textPassword"
+        android:backgroundTint="@color/graysoft"
+        android:background="@android:drawable/editbox_background"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
 
+    <!-- Confirm Password Input -->
     <EditText
-        android:id="@+id/edit_confirm"
+        android:id="@+id/et_confirmpass_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm Password"
-        android:minHeight="48dp" />
+        android:inputType="textPassword"
+        android:backgroundTint="@color/graysoft"
+        android:background="@android:drawable/editbox_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Register Button -->
     <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"/>
+        android:backgroundTint="@color/white"
+        android:text="Register"
+        android:textStyle="bold"
+        android:textColor="@color/blueteal"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Login Link -->
     <TextView
         android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Sudah memiliki Akun? Login"
-        android:textColor="@android:color/holo_blue_dark"
+        android:text="Sudah memiliki akun? Login"
+        android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintMarginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_register" />
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

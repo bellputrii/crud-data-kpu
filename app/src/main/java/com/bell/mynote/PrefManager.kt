@@ -3,7 +3,6 @@ package com.bell.mynote
 import android.content.Context
 import android.content.SharedPreferences
 
-
 class PrefManager private constructor(context: Context) {
     private val sharedPreferences: SharedPreferences
     companion object {
@@ -55,3 +54,4 @@ class PrefManager private constructor(context: Context) {
         editor.apply()
     }
 }
+

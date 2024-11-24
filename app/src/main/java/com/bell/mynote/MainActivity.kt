@@ -1,105 +1,54 @@
-package com.bell.mynote.ui
+package com.bell.mynote
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView.OnItemLongClickListener
-import android.widget.ArrayAdapter
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.bell.mynote.database.Note
+import androidx.lifecycle.Observer
 import com.bell.mynote.database.NoteDao
 import com.bell.mynote.database.NoteRoomDatabase
-import com.bell.mynote.databinding.ActivityMainBinding
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
-
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mNotesDao: NoteDao
-    private lateinit var executorService: ExecutorService
-    private lateinit var database: NoteRoomDatabase
-    private var updateId: Int=0
+    private lateinit var noteDao: NoteDao
+    private lateinit var listView: ListView
+    private lateinit var adapter: DataAdapter
+    private lateinit var btnAdd: Button
+    private lateinit var btnLogout: Button
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        database = NoteRoomDatabase.getDatabase(this)
-
-        executorService = Executors.newSingleThreadExecutor()
+        // Inisialisasi database dan DAO
         val db = NoteRoomDatabase.getDatabase(this)
-        mNotesDao = db!!.noteDao()!!
+        noteDao = db.noteDao()
 
-        with(binding) {
-            btnAdd.setOnClickListener(View.OnClickListener {
-                insert(
-                    Note(
-                        name = .text.toString(),
-                        description = edtDesc.text.toString(),
-                        date = edtDate.text.toString()
-                    )
-                )
-                setEmptyField()
-            })
-            btnUpdate.setOnClickListener {
-                update(
-                    Note(
-                        id = updateId,
-                        title = edtTitle.getText().toString(),
-                        description = edtDesc.getText().toString(),
-                        date = edtDate.getText().toString()
-                    )
-                )
-                updateId = 0
-                setEmptyField()
-            }
-            listView.setOnItemClickListener { adapterView, _, i, _ ->
-                val item = adapterView.adapter.getItem(i) as Note
-                updateId = item.id
-                edtTitle.setText(item.title)
-                edtDesc.setText(item.description)
-                edtDate.setText(item.date)
-            }
-            listView.onItemLongClickListener =
-                OnItemLongClickListener { adapterView, _, i, _ ->
-                    val item = adapterView.adapter.getItem(i) as Note
-                    delete(item)
-                    true
-                }
-        }
-    }
+        // Inisialisasi view
+        listView = findViewById(R.id.listView)
+        btnAdd = findViewById(R.id.btnTambahData)
+        btnLogout = findViewById(R.id.btnLogout)
 
-    override fun onResume() {
-        super.onResume()
-        getAllNotes()
-    }
-    private fun getAllNotes() {
-        mNotesDao.allNotes.observe(this) { notes ->
-            val adapter: ArrayAdapter<Note> = ArrayAdapter<Note>(
-                this,
-                android.R.layout.simple_list_item_1, notes
-            )
-            binding.listView.adapter = adapter
+        // Set adapter
+        adapter = DataAdapter(this, mutableListOf())
+        listView.adapter = adapter
+
+        // Observasi data dari Room Database
+        noteDao.getAllNotes().observe(this, Observer { notes ->
+            adapter.clear()
+            adapter.addAll(notes)
+            adapter.notifyDataSetChanged()
+        })
+
+        // Tombol tambah data
+        btnAdd.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
         }
-    }
-    private fun setEmptyField() {
-        with(binding){
-            edtTitle.setText("")
-            edtDesc.setText("")
-            edtDate.setText("")
+
+        // Tombol logout
+        btnLogout.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
-    }
-    private fun insert(note: Note) {
-        executorService.execute { mNotesDao.insert(note) }
-    }
-    private fun delete(note: Note) {
-        executorService.execute { mNotesDao.delete(note) }
-    }
-    private fun update(note: Note) {
-        executorService.execute { mNotesDao.update(note) }
     }
 }

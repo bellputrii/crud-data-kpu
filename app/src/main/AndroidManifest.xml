@@ -21,20 +21,33 @@
         <activity
             android:name=".database.Note"
             android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
+
+        <activity android:name=".RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- LoginActivity -->
+        <activity android:name=".LoginActivity"
+            android:exported="true"/>
+
+        <activity android:name=".AddActivity"
+            android:exported="true"/>
+
+        <activity android:name=".EditActivity"
+            android:exported="true"/>
+
+        <activity android:name=".DetailActivity"
+            android:exported="true"/>
+
         <activity
-            android:name=".RegisterActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.REGISTER" />
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Intent Login App" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../RegistrationForm-androidstudio" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Relative Layout" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../UTS-BUGFIX/Soal_UAS_PPPB" vcs="Git" />
