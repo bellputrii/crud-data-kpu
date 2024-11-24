@@ -18,13 +18,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mNotesDao: NoteDao
     private lateinit var executorService: ExecutorService
+    private lateinit var database: NoteRoomDatabase
     private var updateId: Int=0
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        database = NoteRoomDatabase.getDatabase(this)
 
         executorService = Executors.newSingleThreadExecutor()
         val db = NoteRoomDatabase.getDatabase(this)
@@ -34,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             btnAdd.setOnClickListener(View.OnClickListener {
                 insert(
                     Note(
-                        title = edtTitle.text.toString(),
+                        name = .text.toString(),
                         description = edtDesc.text.toString(),
                         date = edtDate.text.toString()
                     )
